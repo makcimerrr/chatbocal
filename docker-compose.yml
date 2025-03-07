@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: chatbot
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    restart: always
+
+  ollama:
+    image: ollama/ollama
+    volumes:
+      - ~/.ollama:/root/.ollama
+    ports:
+      - "11434:11434"
+    restart: always
+
+  backend:
+    build: ./backend
+    environment:
+      DATABASE_URL: postgres://user:password@db:5432/chatbot
+    ports:
+      - "3001:3001"
+    depends_on:
+      - db
+      - ollama
+    restart: always
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    restart: always
+
+volumes:
+  db_data:
+  ollama_data:
