@@ -10,6 +10,8 @@ services:
       POSTGRES_DB: chatbot
     volumes:
       - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
     restart: always
 
   ollama:
