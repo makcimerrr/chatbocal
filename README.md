@@ -1,15 +1,14 @@
 # 🐠 ChatBocal
 
-ChatBocal est un chatbot local propulsé par **Ollama** et le modèle **Llama 3.2**, avec un backend Express, un frontend Next.js et une base de données PostgreSQL. L'ensemble tourne grâce à Docker 🐳.
+ChatBocal est un chatbot local propulsé par **Ollama** et plusieurs modèles, notamment **Llama 3.2**, **DeepSeek-LLM**, **DeepSeek-R1** et **Phi3**, avec une application Next.js qui gère à la fois l’interface utilisateur et l’API backend et une base de données PostgreSQL. L'ensemble tourne grâce à Docker 🐳.
 
 ---
 
 ## 🚀 Stack technique
 
-- **Frontend** : Next.js (React)
-- **Backend** : Express.js (Node.js)
+- **Application** : Next.js (React + API Routes)
 - **LLM** : Ollama avec Llama 3.2
-- **Database** : PostgreSQL
+- **Database** : PostgreSQL avec Drizzle ORM
 - **Containerisation** : Docker + Docker Compose
 
 ---
@@ -38,9 +37,9 @@ docker-compose up --build
 
 ## 🌐 Accès
 
-- Frontend : [http://localhost:3000](http://localhost:3000)
-- Backend API : [http://localhost:3001/api/chat](http://localhost:3001/api/chat)
+- Application (Frontend & Backend API) : [http://localhost:3000](http://localhost:3000)
 - Ollama (LLM) : [http://localhost:11434](http://localhost:11434)
+- Database (PostgreSQL) : [http://localhost:5432](http://localhost:5432)
 
 ---
 
@@ -61,7 +60,7 @@ docker exec -it chatbocal-backend-1 sh
 
 ## 📝 Todo
 
-- [ ] Ajouter la persistance des historiques de chat.
+- [ ] Pouvoir uploader des fichiers.
 - [ ] Déployer en production.
 - [ ] Ajouter des tests.
 
@@ -69,4 +68,4 @@ docker exec -it chatbocal-backend-1 sh
 
 ## 📄 Licence
 
-MIT © [Maxime Dubois](https://github.com/makcimerrr)
+Apache 2.0 © [Maxime Dubois](https://github.com/makcimerrr)
